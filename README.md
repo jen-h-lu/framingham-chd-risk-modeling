@@ -33,16 +33,18 @@ The goal is to demonstrate interpretable clinical risk modeling using logistic r
 ### Confusion Matrix
 ![Confusion Matrix](figures/confusion_matrix.png)
 
+These results indicate moderate discriminative ability consistent with baseline clinical risk models such as logistic regression-based cardiovascular risk scores.
+
 ---
 
-## Feature Importance
-Top predictors include:
-- Age
-- Systolic Blood Pressure
-- Smoking status
-- Cholesterol
+## Feature Importance (Odds Ratios)
 
-(See `figures/feature_importance.csv`)
+The logistic regression coefficients were exponentiated to compute odds ratios, allowing clinical interpretability.
+
+Key findings:
+- Age and systolic blood pressure show the strongest positive association with CHD risk
+- Smoking status is a significant behavioral risk factor
+- Cholesterol contributes moderately to risk prediction
 
 ---
 
@@ -51,10 +53,17 @@ The model shows moderate predictive performance consistent with baseline clinica
 
 ---
 
+## Clinical Relevance
+
+This project demonstrates how classical statistical learning models can support interpretable clinical decision-making. Unlike black-box models, logistic regression provides transparent risk factors that align with established cardiovascular epidemiology.
+
+---
+
 ## Limitations
-- Linear model assumption
-- Class imbalance
-- No external validation dataset
+- Logistic regression assumes linear relationships between features and log-odds
+- Dataset is moderately imbalanced (low CHD incidence)
+- No external validation cohort
+- No temporal modeling of longitudinal risk changes
 
 ---
 
