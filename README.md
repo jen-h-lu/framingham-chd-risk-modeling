@@ -71,14 +71,30 @@ Example predictors include:
 
 ---
 
-## Statistical Methodology
-### Data Preprocessing
-A reproducible preprocessing pipeline was implemented using scikit-learn.
+## Methods
 
-Preprocessing included:
-- Median imputation for missing values
-- Feature standardization
-- Stratified train/test split (80/20)
+### Study Design
+A retrospective predictive modeling study was conducted using the Framingham Heart Study dataset to estimate 10-year coronary heart disease (CHD) risk.
+
+### Data Preprocessing
+All models were implemented using reproducible scikit-learn pipelines. Missing values were imputed using median imputation, and all predictors were standardized to zero mean and unit variance.
+
+A stratified 80/20 train-test split was used to preserve outcome prevalence.
+
+### Models
+Two logistic regression-based models were evaluated:
+
+- **Baseline Logistic Regression**
+- **L1-Regularized Logistic Regression (LASSO)** with hyperparameter tuning via 5-fold cross-validation optimizing ROC-AUC.
+
+### Evaluation Metrics
+Model performance was assessed using:
+
+- Discrimination: ROC-AUC
+- Classification: Accuracy, Confusion Matrix
+- Calibration: Brier Score, Calibration Curve
+- Stability: k-fold cross-validation
+- Uncertainty: Bootstrap confidence intervals for ROC-AUC
 
 ---
 
@@ -127,14 +143,16 @@ Model robustness was further evaluated using:
 
 ## Results
 
+Both models demonstrated comparable discriminative ability, with ROC-AUC values of approximately 0.70, consistent with standard clinical risk prediction baselines.
+
+Cross-validated LASSO achieved slight improvements in predictive stability and calibration while reducing model complexity through feature selection.
+
 ### Predictive Performance
 
 | Model | Accuracy | ROC-AUC | Brier Score |
 |-------|---------:|---------:|------------:|
 | Baseline Logistic Regression | 0.844 | 0.702 | 0.1214 |
-| Cross-Validated LASSO | **0.847** | **0.702** | **0.1211** |
-
-The LASSO model achieved comparable discrimination while selecting a smaller subset of clinically relevant predictors.
+| Cross-Validated LASSO | 0.847 | 0.702 | 0.1211 |
 
 ---
 
@@ -201,6 +219,14 @@ This project demonstrates that carefully implemented statistical learning method
 While more complex machine learning algorithms may achieve modest gains in predictive accuracy, logistic regression provides transparent parameter estimates that can be interpreted directly as odds ratios, supporting explainable clinical decision-making.
 
 Cross-validated LASSO further improves interpretability by removing less informative predictors while maintaining essentially identical predictive performance.
+
+---
+
+## Clinical Interpretation
+
+The model identifies age, systolic blood pressure, and smoking behavior as the strongest predictors of 10-year CHD risk. These findings align with established cardiovascular epidemiology, supporting the external validity of the model.
+
+Importantly, LASSO regularization improves interpretability by removing weak predictors while maintaining equivalent predictive performance.
 
 ---
 
