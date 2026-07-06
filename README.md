@@ -2,7 +2,9 @@
 
 ## Interpretable Statistical Learning for Ten-Year Coronary Heart Disease Risk Prediction
 
-![Python](https://img.shields.io/badge/Python-3.10-blue) ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+![Python](https://img.shields.io/badge/Python-3.10-blue) ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange) ![License](https://img.shields.io/badge/License-MIT-green)
+
+---
 
 ---
 
